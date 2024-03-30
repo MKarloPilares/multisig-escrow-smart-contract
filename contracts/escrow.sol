@@ -14,6 +14,10 @@ contract NFTEscrow is Context{
         uint256 bellsInside;
     }
     //Data structure for the lock corresponding to the received NFT
+    
+    event nftTaken(address indexed from, uint256 indexed tokenId, uint256 indexed bellsInside);
+    event coinGiven(address indexed to, uint256 indexed coins);
+    event nftReturned(address indexed to, uint256 tokenId);
 
     //Lock identifier mapping
     mapping(uint256 => Lock) public locks;
@@ -36,6 +40,8 @@ contract NFTEscrow is Context{
         
         //Makes new instance of Lock struct with tokenId as identifier
         locks[_tokenId] = Lock(msg.sender, _tokenId, lockEndTime, bellsInside);
+
+        emit nftTaken(msg.sender, _tokenId, bellsInside);
     }
 
     //Gives Coins to original NFT owner based on inputted and checked Bells amount
@@ -44,6 +50,8 @@ contract NFTEscrow is Context{
         require(bellsChecked == locks[_tokenId].bellsInside, "Bells Mismatch");
         //Calls mint function of contract address
         VTest(coinContractAddress).mint(locks[_tokenId].owner, bellsChecked);
+
+        emit coinGiven(locks[_tokenId].owner, bellsChecked);
 
         //Delete lock instance of NFT
         delete locks[_tokenId];
@@ -57,6 +65,8 @@ contract NFTEscrow is Context{
         // Transfer the NFT to the original owner
         IERC721(nftContractAddress).transferFrom(address(this), locks[_tokenId].owner, _tokenId);
         
+        emit nftReturned(locks[_tokenId].owner, _tokenId);
+
         //Delete lock struct instance for NFT
         delete locks[_tokenId];
         
