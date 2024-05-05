@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const contract = await ethers.deployContract("NFTEscrow");
+  const contract = await ethers.deployContract("MultiSigNFTEscrow");
   await contract.waitForDeployment();
   console.log(
     `deployed to ${contract.target}`
