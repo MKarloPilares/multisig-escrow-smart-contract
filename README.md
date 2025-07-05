@@ -1,3 +1,7 @@
+This smart contract was made as part of the Televault project, a decentralized application made to let users deposit their vaulted bellscoin NFT to this smart contract and have it give the users eth based on the vaulted amount. This is done through a multi signature authentication system, the user sends their digital signature to the contract along with the NFT, a backend API will then confirm the ownership and amount of the NFT and sends its own signature to the contract once confirmation is complete. When the two signatures are received by the contract then the trade happens. 
+
+This repository contains the smart contract and a simple sample dApp to test it.
+
 To Deploy Contracts
 
 1. npx hardhat compile
