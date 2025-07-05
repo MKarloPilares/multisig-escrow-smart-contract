@@ -2,6 +2,8 @@ This smart contract was made as part of the Televault project, a decentralized a
 
 This repository contains the smart contract and a simple sample dApp to test it.
 
+The contract was deployed to the Arbitrum Sepolia testnet for testing.
+
 To Deploy Contracts
 
 1. npx hardhat compile
