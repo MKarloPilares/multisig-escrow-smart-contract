@@ -8,5 +8,12 @@
     "@openzeppelin/cli": "^2.8.2",
     "@openzeppelin/contracts": "^5.0.2",
     "dotenv": "^16.4.5"
+  },
+  "scripts": {
+    "test": "hardhat test",
+    "test:security": "hardhat test test/MultiSigNFTEscrow.test.ts",
+    "test:integration": "hardhat test test/Integration.test.ts",
+    "test:coverage": "hardhat coverage",
+    "test:gas": "REPORT_GAS=true hardhat test"
   }
 }
