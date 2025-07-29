@@ -25,4 +25,4 @@ To Deploy Contracts:
     8. npx hardhat verify [copied address] --network arbitrumSepolia
     9. Transfer ownership of coin contract to escrow contract
 
-This smart contract has been refactored to fit production standards and serve as learning material.
+This smart contract has been refactored to fit standards and serve as learning material.
